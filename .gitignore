@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pt
+*.pth
+*.pkl
+*.pickle
+*.bin
+*checkpoint*
+/tmp_*/
+regen_*/
+observations.tmp.*
+compare_*/
+.clean-checkout/

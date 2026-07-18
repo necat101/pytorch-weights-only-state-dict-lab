@@ -43,4 +43,3 @@ Failures: 0
 - When PyTorch is available, the lab exercises: tensor roundtrip, primitive checkpoint, state_dict, model reconstruction, benign-object rejection, trusted local full-object load, malformed rejection, CPU map_location.
 
 This lab does NOT prove that every PyTorch checkpoint is safe, that weights_only=True accepts every state dictionary, that restricted loading is a complete sandbox, that an exception identifies every unsafe global, that weights_only=False is safe for untrusted files, that a zip container prevents pickle behavior, that state_dict contains model architecture, that matching tensors prove model correctness, that matching outputs prove model quality, that a local checkpoint has authentic provenance, that a checksum or signature was verified, that safetensors or ONNX was evaluated, that a production deployment was secured, or that the lab is security-certified or production-ready.
-
