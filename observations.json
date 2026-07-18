@@ -2,7 +2,8 @@
   {
     "case_id": "torch_environment_marker",
     "method": "inspect_environment",
-    "classification": "pass",
+    "expected_classification": "pass",
+    "actual_classification": "pass",
     "observation": {
       "python_version": "3.12.3",
       "torch_available": false,
@@ -13,7 +14,8 @@
   {
     "case_id": "torch_environment_marker",
     "method": "exercise_serialization",
-    "classification": "not_applicable",
+    "expected_classification": "not_applicable",
+    "actual_classification": "not_applicable",
     "observation": {
       "note": "environment marker, no serialization exercise"
     }
@@ -21,7 +23,8 @@
   {
     "case_id": "torch_environment_marker",
     "method": "verify_roundtrip",
-    "classification": "not_applicable",
+    "expected_classification": "not_applicable",
+    "actual_classification": "not_applicable",
     "observation": {
       "note": "environment marker"
     }
@@ -29,338 +32,439 @@
   {
     "case_id": "torch_environment_marker",
     "method": "security_context_observation",
-    "classification": "local_observation",
+    "expected_classification": "local_observation",
+    "actual_classification": "local_observation",
     "observation": {
       "torch_available": false,
-      "note": "PyTorch not installed in this environment; torch-dependent cases will be framework_skip."
+      "note": "PyTorch not installed; torch-dependent cases framework_skip"
     }
   },
   {
     "case_id": "plain_tensor_weights_only_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "plain_tensor_weights_only_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "plain_tensor_weights_only_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "plain_tensor_weights_only_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "primitive_checkpoint_weights_only_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "primitive_checkpoint_weights_only_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "primitive_checkpoint_weights_only_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "primitive_checkpoint_weights_only_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "state_dict_roundtrip_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "state_dict_roundtrip_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "state_dict_roundtrip_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "state_dict_roundtrip_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "model_reconstruction_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "model_reconstruction_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "model_reconstruction_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "model_reconstruction_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "benign_custom_object_rejection_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "benign_custom_object_rejection_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "benign_custom_object_rejection_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "expected_error",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "benign_custom_object_rejection_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "trusted_custom_object_explicit_load_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "trusted_custom_object_explicit_load_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "trusted_custom_object_explicit_load_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "trusted_custom_object_explicit_load_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "malformed_checkpoint_rejection_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "malformed_checkpoint_rejection_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "malformed_checkpoint_rejection_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "expected_error",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "malformed_checkpoint_rejection_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "cpu_map_location_marker",
     "method": "inspect_environment",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "cpu_map_location_marker",
     "method": "exercise_serialization",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "cpu_map_location_marker",
     "method": "verify_roundtrip",
-    "classification": "framework_skip",
+    "expected_classification": "pass",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "cpu_map_location_marker",
     "method": "security_context_observation",
-    "classification": "framework_skip",
+    "expected_classification": "local_observation",
+    "actual_classification": "framework_skip",
     "observation": {
-      "reason": "PyTorch not available in this environment",
+      "reason": "PyTorch not available",
       "torch_available": false
     }
   },
   {
     "case_id": "no_global_serialization_or_ml_validity_claim_marker",
     "method": "inspect_environment",
-    "classification": "context_only",
+    "expected_classification": "context_only",
+    "actual_classification": "context_only",
     "observation": {
-      "files_exist": false,
-      "disclaimers_found": false,
-      "method": "inspect_environment"
+      "disclaimer_count": 14,
+      "disclaimers": [
+        "every pytorch checkpoint is safe",
+        "weights_only=true accepts every state dictionary",
+        "restricted loading is a complete sandbox",
+        "an exception identifies every unsafe global",
+        "weights_only=false is safe for untrusted files",
+        "a zip container prevents pickle behavior",
+        "state_dict contains model architecture",
+        "matching tensors prove model correctness",
+        "matching outputs prove model quality",
+        "a local checkpoint has authentic provenance",
+        "a checksum or signature was verified",
+        "safetensors or onnx was evaluated",
+        "a production deployment was secured",
+        "security-certified or production-ready"
+      ],
+      "method": "inspect_environment",
+      "note": "README/RESULTS must disclaim global safety/quality/architecture/provenance claims - see repository documentation"
     }
   },
   {
     "case_id": "no_global_serialization_or_ml_validity_claim_marker",
     "method": "exercise_serialization",
-    "classification": "context_only",
+    "expected_classification": "context_only",
+    "actual_classification": "context_only",
     "observation": {
-      "files_exist": false,
-      "disclaimers_found": false,
-      "method": "exercise_serialization"
+      "disclaimer_count": 14,
+      "disclaimers": [
+        "every pytorch checkpoint is safe",
+        "weights_only=true accepts every state dictionary",
+        "restricted loading is a complete sandbox",
+        "an exception identifies every unsafe global",
+        "weights_only=false is safe for untrusted files",
+        "a zip container prevents pickle behavior",
+        "state_dict contains model architecture",
+        "matching tensors prove model correctness",
+        "matching outputs prove model quality",
+        "a local checkpoint has authentic provenance",
+        "a checksum or signature was verified",
+        "safetensors or onnx was evaluated",
+        "a production deployment was secured",
+        "security-certified or production-ready"
+      ],
+      "method": "exercise_serialization",
+      "note": "README/RESULTS must disclaim global safety/quality/architecture/provenance claims - see repository documentation"
     }
   },
   {
     "case_id": "no_global_serialization_or_ml_validity_claim_marker",
     "method": "verify_roundtrip",
-    "classification": "context_only",
+    "expected_classification": "context_only",
+    "actual_classification": "context_only",
     "observation": {
-      "files_exist": false,
-      "disclaimers_found": false,
-      "method": "verify_roundtrip"
+      "disclaimer_count": 14,
+      "disclaimers": [
+        "every pytorch checkpoint is safe",
+        "weights_only=true accepts every state dictionary",
+        "restricted loading is a complete sandbox",
+        "an exception identifies every unsafe global",
+        "weights_only=false is safe for untrusted files",
+        "a zip container prevents pickle behavior",
+        "state_dict contains model architecture",
+        "matching tensors prove model correctness",
+        "matching outputs prove model quality",
+        "a local checkpoint has authentic provenance",
+        "a checksum or signature was verified",
+        "safetensors or onnx was evaluated",
+        "a production deployment was secured",
+        "security-certified or production-ready"
+      ],
+      "method": "verify_roundtrip",
+      "note": "README/RESULTS must disclaim global safety/quality/architecture/provenance claims - see repository documentation"
     }
   },
   {
     "case_id": "no_global_serialization_or_ml_validity_claim_marker",
     "method": "security_context_observation",
-    "classification": "context_only",
+    "expected_classification": "context_only",
+    "actual_classification": "context_only",
     "observation": {
-      "files_exist": false,
-      "disclaimers_found": false,
-      "method": "security_context_observation"
+      "disclaimer_count": 14,
+      "disclaimers": [
+        "every pytorch checkpoint is safe",
+        "weights_only=true accepts every state dictionary",
+        "restricted loading is a complete sandbox",
+        "an exception identifies every unsafe global",
+        "weights_only=false is safe for untrusted files",
+        "a zip container prevents pickle behavior",
+        "state_dict contains model architecture",
+        "matching tensors prove model correctness",
+        "matching outputs prove model quality",
+        "a local checkpoint has authentic provenance",
+        "a checksum or signature was verified",
+        "safetensors or onnx was evaluated",
+        "a production deployment was secured",
+        "security-certified or production-ready"
+      ],
+      "method": "security_context_observation",
+      "note": "README/RESULTS must disclaim global safety/quality/architecture/provenance claims - see repository documentation"
     }
   }
 ]

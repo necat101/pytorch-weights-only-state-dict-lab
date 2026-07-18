@@ -33,31 +33,31 @@ The HN thread at https://news.ycombinator.com/item?id=26489150 ("Exploiting mach
 hackernews get-item --id 26489150
 ```
 
-Relevant public evidence was captured before the discussion summary was prepared. See `hn_thread_evidence.md` and `hn_comments_sanitized.json` (item id, author, parent id, timestamp, type, complete public comment text).
+Relevant public evidence was captured before the discussion summary was prepared. See `hn_thread_evidence.md` and `hn_comments_sanitized.json`.
 
 ### Thread summary
 
-**roddux** highlighted that the Trail of Bits article author created **fickling** (https://github.com/trailofbits/fickling), a tool for examining pickle files: "[Fickling] can help you reverse engineer, test, and even create malicious pickle files."
+**roddux** highlighted that the Trail of Bits article author created **fickling**, a tool for examining pickle files.
 
-**tyingq** was surprised that pickle was used for machine-learning models, noting a common impression that pickle is slow, and wondered whether support for complex Python objects explained its popularity in ML.
+**tyingq** was surprised that pickle was used for machine-learning models, noting pickle is slow, and wondered whether support for complex Python objects explained its popularity.
 
-**kvathupo** distinguished research code from deployment engineering, describing deep-learning research code as often having larger software engineering problems than just pickling, and noting the gap between computer science theoreticians and software engineers who deploy models.
+**kvathupo** distinguished research code from deployment engineering.
 
-**nonameiguess** emphasized that Python's own documentation warns that pickle is unsafe (big red box), that pickle doesn't support NumPy natively, and that they would have expected something like HDF5 for ML model storage.
+**nonameiguess** emphasized that Python's own documentation warns that pickle is unsafe, and expected HDF5 for ML storage.
 
-**liuliu** separated checkpointing from export and explained that dynamic PyTorch models make persistence more complicated. Recalled HDF5 discussions with Soumith early in the AI renaissance (~2014). Argued "export" and "checkpointing" should be two different things: an exported model should be safe to deploy, a checkpointing model should be treated like code. Suggested ONNX fills the export role.
+**liuliu** separated checkpointing from export, explaining that dynamic PyTorch models make persistence more complicated. Argued export and checkpointing should be two different things.
 
-**hprotagonist** noted that a zip container does not by itself remove the underlying serialization problem. PyTorch serialized models can include Python code for JIT scripts, making safe storage non-obvious. Noted torch moved to a zipfile implementation as of PyTorch 1.6.
+**hprotagonist** noted that a zip container does not by itself remove the underlying serialization problem.
 
-**ogrisel** explained that pickle performance depends strongly on whether an object contains many small Python objects or a few large numerical arrays. With multi-MB/GB NumPy arrays (ML model parameters), pickle is IO-bottlenecked and very fast.
+**ogrisel** explained that pickle performance depends strongly on whether an object contains many small Python objects or a few large numerical arrays.
 
-**wodenokoto** said pickle is commonly used internally where developers believe the code is trusted: "I'm surprised pickled models are used for sharing with 3rd parties. But internally in projects I see it used all the time. It's easy and it works and you trust internal code."
+**wodenokoto** said pickle is commonly used internally where developers believe the code is trusted.
 
 **ori_b** warned that internal code has a habit of becoming external code.
 
-**krallistic** argued that loading performance is often less important than the security risk: "BUT the security problems still remain and weigh much higher."
+**krallistic** argued that loading performance is often less important than the security risk.
 
-**wendythehacker** raised authenticity and integrity checking — ML frameworks don't have built-in authenticity/integrity checking when loading models, developers must build hash/signature checking themselves, very few do.
+**wendythehacker** raised authenticity and integrity checking.
 
 The thread does **not** prove that every PyTorch checkpoint is malicious, that every pickle file contains executable behavior, that a zip-based checkpoint is automatically safe, that `state_dict` alone describes a complete model architecture, that JSON is always an appropriate tensor format, or that one local serialization test validates a production model pipeline.
 
@@ -70,8 +70,8 @@ python -m unittest -v
 
 ## Artifacts
 
-- `observations.json` / `observations.csv` — 40-row result table
-- `RESULTS.md` — summary
+- `observations.json` / `observations.csv` — 40-row result table with expected_classification and actual_classification
+- `RESULTS.md` — generated from the row collection
 - `VERIFY.md` — clean-checkout verification transcript
 - `hn_thread_evidence.md` / `hn_comments_sanitized.json` — HN thread evidence
 
@@ -94,4 +94,4 @@ This repository does **not** prove that:
 - a production deployment was secured,
 - or that the lab is security-certified or production-ready.
 
-Deterministic in-memory checkpoints only. No `.pt`, `.pth`, `.bin`, pickle, zip, or temporary checkpoint files are committed.
+Deterministic in-memory checkpoints only.

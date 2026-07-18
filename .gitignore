@@ -6,9 +6,3 @@ __pycache__/
 *.pkl
 *.pickle
 *.bin
-*checkpoint*
-/tmp_*/
-regen_*/
-observations.tmp.*
-compare_*/
-.clean-checkout/
