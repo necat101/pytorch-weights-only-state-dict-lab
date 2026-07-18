@@ -1,0 +1,102 @@
+[
+  {
+    "case_id": "torch_environment_marker",
+    "description": "Record python version, pytorch version, cpu/cuda availability, default dtype/device, torch.save/load existence, torch.nn.Module.load_state_dict existence, torch.load weights_only signature support.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "plain_tensor_weights_only_marker",
+    "description": "Save/load cpu tensor [[1.0, -2.0], [3.5, 0.25]] float32 via io.BytesIO, torch.load(weights_only=True, map_location='cpu'), verify torch.equal.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "primitive_checkpoint_weights_only_marker",
+    "description": "Save/load dict {\"step\": 7, \"name\": \"tiny-checkpoint\", \"weights\": tensor([1.25, -0.5], float32), \"shape\": [2]} with weights_only=True.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "state_dict_roundtrip_marker",
+    "description": "TinyLinear(Linear(3,2)): weight [[1.0,0.0,-1.0],[0.5,2.0,0.25]], bias [0.25,-0.75]. Save state_dict only, load weights_only=True, verify every tensor.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "model_reconstruction_marker",
+    "description": "Fresh TinyLinear, load_state_dict, check missing/unexpected keys. Input [[2.0,-1.0,0.5]] inference_mode, verify output equality.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "benign_custom_object_rejection_marker",
+    "description": "BenignRecord(label='local-only', count=3), no __reduce__. Save to BytesIO, load weights_only=True, expect restricted rejection.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "trusted_custom_object_explicit_load_marker",
+    "description": "Same BenignRecord, load with explicit weights_only=False on trusted local buffer only. Verify attributes.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "malformed_checkpoint_rejection_marker",
+    "description": "Bytes b'not a pytorch checkpoint' in BytesIO, load weights_only=True, map_location='cpu', expect rejection.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "cpu_map_location_marker",
+    "description": "Save plain tensor, load with map_location='cpu', weights_only=True, verify device==cpu and equality.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  },
+  {
+    "case_id": "no_global_serialization_or_ml_validity_claim_marker",
+    "description": "Context-only: verify README/RESULTS disclaim no global safety/quality/architecture/provenance claims.",
+    "methods": [
+      "inspect_environment",
+      "exercise_serialization",
+      "verify_roundtrip",
+      "security_context_observation"
+    ]
+  }
+]

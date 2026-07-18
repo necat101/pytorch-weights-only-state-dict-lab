@@ -1,0 +1,366 @@
+[
+  {
+    "case_id": "torch_environment_marker",
+    "method": "inspect_environment",
+    "classification": "pass",
+    "observation": {
+      "python_version": "3.12.3",
+      "torch_available": false,
+      "torch_version": null,
+      "torch_import_error": "ModuleNotFoundError: No module named 'torch'"
+    }
+  },
+  {
+    "case_id": "torch_environment_marker",
+    "method": "exercise_serialization",
+    "classification": "not_applicable",
+    "observation": {
+      "note": "environment marker, no serialization exercise"
+    }
+  },
+  {
+    "case_id": "torch_environment_marker",
+    "method": "verify_roundtrip",
+    "classification": "not_applicable",
+    "observation": {
+      "note": "environment marker"
+    }
+  },
+  {
+    "case_id": "torch_environment_marker",
+    "method": "security_context_observation",
+    "classification": "local_observation",
+    "observation": {
+      "torch_available": false,
+      "note": "PyTorch not installed in this environment; torch-dependent cases will be framework_skip."
+    }
+  },
+  {
+    "case_id": "plain_tensor_weights_only_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "plain_tensor_weights_only_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "plain_tensor_weights_only_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "plain_tensor_weights_only_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "primitive_checkpoint_weights_only_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "primitive_checkpoint_weights_only_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "primitive_checkpoint_weights_only_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "primitive_checkpoint_weights_only_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "state_dict_roundtrip_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "state_dict_roundtrip_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "state_dict_roundtrip_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "state_dict_roundtrip_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "model_reconstruction_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "model_reconstruction_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "model_reconstruction_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "model_reconstruction_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "benign_custom_object_rejection_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "benign_custom_object_rejection_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "benign_custom_object_rejection_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "benign_custom_object_rejection_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "trusted_custom_object_explicit_load_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "trusted_custom_object_explicit_load_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "trusted_custom_object_explicit_load_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "trusted_custom_object_explicit_load_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "malformed_checkpoint_rejection_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "malformed_checkpoint_rejection_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "malformed_checkpoint_rejection_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "malformed_checkpoint_rejection_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "cpu_map_location_marker",
+    "method": "inspect_environment",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "cpu_map_location_marker",
+    "method": "exercise_serialization",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "cpu_map_location_marker",
+    "method": "verify_roundtrip",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "cpu_map_location_marker",
+    "method": "security_context_observation",
+    "classification": "framework_skip",
+    "observation": {
+      "reason": "PyTorch not available in this environment",
+      "torch_available": false
+    }
+  },
+  {
+    "case_id": "no_global_serialization_or_ml_validity_claim_marker",
+    "method": "inspect_environment",
+    "classification": "context_only",
+    "observation": {
+      "files_exist": false,
+      "disclaimers_found": false,
+      "method": "inspect_environment"
+    }
+  },
+  {
+    "case_id": "no_global_serialization_or_ml_validity_claim_marker",
+    "method": "exercise_serialization",
+    "classification": "context_only",
+    "observation": {
+      "files_exist": false,
+      "disclaimers_found": false,
+      "method": "exercise_serialization"
+    }
+  },
+  {
+    "case_id": "no_global_serialization_or_ml_validity_claim_marker",
+    "method": "verify_roundtrip",
+    "classification": "context_only",
+    "observation": {
+      "files_exist": false,
+      "disclaimers_found": false,
+      "method": "verify_roundtrip"
+    }
+  },
+  {
+    "case_id": "no_global_serialization_or_ml_validity_claim_marker",
+    "method": "security_context_observation",
+    "classification": "context_only",
+    "observation": {
+      "files_exist": false,
+      "disclaimers_found": false,
+      "method": "security_context_observation"
+    }
+  }
+]
