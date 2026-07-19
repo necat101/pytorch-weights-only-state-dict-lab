@@ -78,7 +78,7 @@ Each row contains separate `expected_classification` and `actual_classification`
 - RESULTS agreement with row collection: verified
 - Required disclaimers present in README+RESULTS: verified
 - No committed binaries: verified
-- Private path scan: **all 11 required committed text artifacts scanned** with line-by-line narrow context matching; prohibited patterns: home/tmp/root/var paths, GitHub PATs, Bearer/Auth headers, tracebacks, os.environ, HMAC secrets, tool proxy tokens
+- Private path scan: **all 11 required committed text artifacts scanned** with line-by-line narrow context matching; prohibited patterns: Unix home, tmp, root, var paths, GitHub PAT prefixes, Bearer/Authorization headers, traceback dumps, environment dumps, HMAC secrets, tool proxy tokens
 
 ## Repair summary (v3)
 
