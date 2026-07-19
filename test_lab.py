@@ -156,6 +156,10 @@ class TestLab(unittest.TestCase):
             self.skipTest("torch not available")
         r = find("benign_custom_object_rejection_marker", "verify_roundtrip")
         self.assertEqual(r["actual_classification"], "expected_error")
+        obs = r["observation"] or {}
+        self.assertTrue(obs.get("rejected"))
+        exc_class = obs.get("exception_class", "")
+        self.assertTrue(exc_class)
 
     def test_trusted_local_object_values(self):
         if not TORCH_AVAILABLE:
@@ -168,6 +172,10 @@ class TestLab(unittest.TestCase):
             self.skipTest("torch not available")
         r = find("malformed_checkpoint_rejection_marker", "verify_roundtrip")
         self.assertEqual(r["actual_classification"], "expected_error")
+        obs = r["observation"] or {}
+        self.assertTrue(obs.get("rejected"))
+        exc_class = obs.get("exception_class", "")
+        self.assertTrue(exc_class)
 
     def test_cpu_device_placement(self):
         if not TORCH_AVAILABLE:
@@ -253,79 +261,63 @@ class TestLab(unittest.TestCase):
                 self.assertNotIn(ext, bad_exts, f"committed binary found: {os.path.join(root, fn)}")
 
     def test_no_private_paths(self):
-        # Scan EVERY required committed text artifact
-        artifacts = [
-            "README.md",
-            "RESULTS.md",
-            "VERIFY.md",
-            "cases.json",
-            "observations.json",
-            "observations.csv",
-            "run_lab.py",
-            "test_lab.py",
-            "hn_thread_evidence.md",
-            "hn_comments_sanitized.json",
-            ".gitignore",
+        artifacts = ["README.md","RESULTS.md","VERIFY.md","cases.json","observations.json","observations.csv","run_lab.py","test_lab.py","hn_thread_evidence.md","hn_comments_sanitized.json",".gitignore",]
+        prohibited = [
+            ("/home/", "home directory path"),
+            ("/tmp/", "tmp directory path"),
+            ("/root/", "root home path"),
+            ("/var/", "var filesystem path"),
+            ("ghp_", "GitHub PAT prefix"),
+            ("github_pat_", "GitHub PAT prefix"),
+            ("Bearer ", "Bearer token"),
+            ("Authorization:", "Authorization header"),
+            ("Traceback (most recent call last)", "traceback dump"),
+            ("  File ", "traceback file line"),
+            ("os.environ", "environment dump"),
+            ("OPENCLAWHMAC", "HMAC secret"),
+            ("CLAWMARK_TOOL_PROXY_TOKEN", "tool proxy token"),
         ]
-        # Narrow documented allowances: test_lab.py legitimately mentions path patterns
-        # as part of its artifact-scanning test assertions. Allow only these specific
-        # literal strings in test_lab.py, nowhere else.
-        allowed_in_test_lab = {
-            '"/home/"',
-            '"/tmp/"',
-            '"/root/"',
-            '"C:\\\\Users\\\\"',
-            "C:/Users/",
-            "/clean-checkout",
-        }
-        bad_substrings = ["/home/", "/tmp/", "/root/", "C:\\Users\\"]
+        # Allowlist: (file_path, required_context, bad_pattern)
+        allowances = [
+            ("test_lab.py", "home directory path", "/home/"),
+            ("test_lab.py", "tmp directory path", "/tmp/"),
+            ("test_lab.py", "root home path", "/root/"),
+            ("test_lab.py", "var filesystem path", "/var/"),
+            ("test_lab.py", "GitHub PAT prefix", "ghp_"),
+            ("test_lab.py", "GitHub PAT prefix", "github_pat_"),
+            ("test_lab.py", "Bearer token", "Bearer "),
+            ("test_lab.py", "Authorization header", "Authorization:"),
+            ("test_lab.py", "traceback dump", "Traceback (most recent call last)"),
+            ("test_lab.py", "traceback file line", "  File "),
+            ("test_lab.py", "environment dump", "os.environ"),
+            ("test_lab.py", "HMAC secret", "OPENCLAWHMAC"),
+            ("test_lab.py", "tool proxy token", "CLAWMARK_TOOL_PROXY_TOKEN"),
+        ]
         found_violations = []
         for path in artifacts:
             if not os.path.exists(path):
-                if path == "VERIFY.md":
-                    continue  # VERIFY.md may not exist during initial run
+                if path == "VERIFY.md": continue
                 self.fail(f"required artifact missing: {path}")
             with open(path, "r", encoding="utf-8", errors="ignore") as f:
                 content = f.read()
-            for bad in bad_substrings:
-                if bad not in content:
-                    continue
-                # Check narrow allowances
-                if path == "test_lab.py":
-                    # test_lab.py may contain these strings ONLY within its test_no_private_paths
-                    # assertion list - verify each occurrence is in an allowed context
-                    # Simple check: count occurrences, allow if all are in the allowed_in_test_lab set
-                    # For strictness, just check that the file contains the allowed literals
-                    # and no other private-looking paths with usernames
-                    # Allow the documented test strings, reject everything else
-                    # We'll do a simple filter: remove allowed literals, then check again
-                    filtered = content
-                    for allowed in allowed_in_test_lab:
-                        filtered = filtered.replace(allowed.strip('"'), "")
-                        filtered = filtered.replace(allowed, "")
-                    if bad in filtered:
-                        # Still found bad pattern outside allowed literals
-                        # Check if it's /clean-checkout which is explicitly allowed everywhere
-                        if "/clean-checkout" in content[max(0, content.find(bad)-50):content.find(bad)+50]:
-                            continue
-                        found_violations.append(f"{path}: contains {bad!r} outside documented allowances")
-                    continue
-                # For all other artifacts: allow ONLY /clean-checkout
-                # Find all occurrences
-                idx = 0
-                while True:
-                    pos = content.find(bad, idx)
-                    if pos == -1:
-                        break
-                    # Check 50 chars context for /clean-checkout allowance
-                    context = content[max(0, pos-30):pos+30]
-                    if "/clean-checkout" in context and path in ["README.md", "RESULTS.md", "VERIFY.md", "test_lab.py"]:
-                        idx = pos + 1
-                        continue
-                    found_violations.append(f"{path}:{content[:pos].count(chr(10))+1}: contains {bad!r}")
-                    break
+            for lineno, line in enumerate(content.splitlines(), 1):
+                for bad_pattern, bad_desc in prohibited:
+                    if bad_pattern not in line: continue
+                    allowed = False
+                    for allow_file, allow_context, allow_pat in allowances:
+                        if allow_pat != bad_pattern: continue
+                        if allow_file and allow_file != path: continue
+                        if allow_context in line:
+                            allowed = True
+                            break
+                    if not allowed and "/clean-checkout" in line:
+                        allowed = True
+                    if not allowed:
+                        found_violations.append(f"{path}:{lineno}: {bad_desc} {bad_pattern!r}")
         if found_violations:
-            self.fail("Private path violations found:\n" + "\n".join(found_violations))
+            self.fail("Prohibited content found:\n" + "\n".join(found_violations))
+
+
 
 if __name__ == "__main__":
     unittest.main()

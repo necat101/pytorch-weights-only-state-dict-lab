@@ -23,7 +23,7 @@ CPU tensors only. No training, no optimizer, no `backward()`, no gradients, no l
 7. **trusted_custom_object_explicit_load_marker** — Same `BenignRecord`, load with explicit `weights_only=False`, trusted local buffer only. Verify attributes. Local observation only — **not** proof that arbitrary pickle loading is safe.
 8. **malformed_checkpoint_rejection_marker** — Bytes `b"not a pytorch checkpoint"`, load `weights_only=True`, `map_location="cpu"`, expect rejection. One malformed-input rejection is **not** a general parser-security guarantee.
 9. **cpu_map_location_marker** — Save plain tensor, load `map_location="cpu"`, `weights_only=True`, verify CPU device + equality. Does **not** test accelerator checkpoint migration.
-10. **no_global_serialization_or_ml_validity_claim_marker** — Context-only. Verifies README/RESULTS disclaim global safety/quality claims.
+10. **no_global_serialization_or_ml_validity_claim_marker** — Context-only deterministic disclaimer manifest. Records the list of global safety/quality/architecture/provenance claims that this lab does NOT make. The separate unittest `test_required_disclaimers` verifies README/RESULTS text.
 
 ## Hacker News thread access
 
